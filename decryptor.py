@@ -9,21 +9,30 @@ def main():
         abc_index[c] = i
 
     N = len(alphabet) # abc_index length
-    P = 6 # key length
 
     with open("file.txt", "r") as f:
         ciphertext = f.read()
-    
-    with open("result.txt", "w") as f:
-        f.write(" ")
-    
-    # keyword is CRYPTO (2, 17, 24, 15, 19, 14)
-    keys = [30, 15, 8, 17, 13, 18] 
-    
+    print("Acceptable characters (case insensitive): " + alphabet)
+    invalid = True
+    while invalid:
+        invalid = False
+        print("Please enter the keyword: ")
+        keys = input().lower()
+        keys = list(keys)
+
+        for i, key in enumerate(keys):
+            if key not in alphabet:
+                print("Invalid character found")
+                invalid = True
+                break
+            keys[i] = abc_index[key]
+
+    P = len(keys) # key length
+
     result = []
     for i, c in enumerate(ciphertext):
         b = keys[i % P]
-        index = abc_index[c] + b
+        index = abc_index[c] - b
         index %= N
 
         result.append(alphabet[index])
