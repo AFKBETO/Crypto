@@ -17,8 +17,8 @@ def main():
     with open("result.txt", "w") as f:
         f.write(" ")
     
-    # keyword is EFREI (4, 5, 14, 4, 8)
-    keys = [30, 15, 8, 17, 13,18] 
+    # keyword is CRYPTO (2, 17, 24, 15, 19, 14)
+    keys = [30, 15, 8, 17, 13, 18] 
     
     result = []
     for i, c in enumerate(ciphertext):
@@ -33,9 +33,6 @@ def main():
     print(result)
 
     return
-
-
-
 
 if __name__ == "__main__":
     main()
